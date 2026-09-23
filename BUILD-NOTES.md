@@ -90,3 +90,17 @@ contains no `MechLabPanel` reference at all (verified by string scan).
 
 **If you ever re-add a file to this build, grep it for `[HarmonyPatch]` first.** A feature
 being "off" is not protection.
+
+## Where this lives
+
+Fork: **https://github.com/jaredvjonas/BattletechPerformanceFix**, branch **`iriantech-fork`**,
+branched from upstream `feature/TagsetQueryInChunks` so the IrianTech changes show as a
+reviewable diff against the real upstream history rather than a source drop.
+
+Working copy: `C:\BattleTech\Modders\BattletechPerformanceFix` (alongside the other forks).
+Build artifacts and the game DLLs msbuild copies into the output are covered by `.gitignore`
+and must never be committed.
+
+Upstream is not tracked as a remote; add it with
+`git remote add upstream https://github.com/m22spencer/BattletechPerformanceFix.git`
+if the branch ever needs re-syncing.
