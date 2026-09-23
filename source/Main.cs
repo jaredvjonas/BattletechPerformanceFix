@@ -65,7 +65,8 @@ namespace BattletechPerformanceFix
                     return;
                 }
 
-                var WantVersions = new string[] { "1.2.", "1.3." };
+                // IrianTech: this branch predates 1.9; the 2.13 release supported it, so accept it here.
+                var WantVersions = new string[] { "1.2.", "1.3.", "1.9." };
                 if (WantVersions.Where(v => VersionInfo.ProductVersion.Trim().StartsWith(v)).Any())
                 {
                     LogInfo(string.Format("BattletechPerformanceFix found BattleTech {0} and will now load", VersionInfo.ProductVersion));
@@ -83,21 +84,16 @@ namespace BattletechPerformanceFix
 
                 var allFeatures = new Dictionary<Type, bool> {
                     //{ typeof(LazyRoomInitialization), false },
-                    { typeof(MechlabFix), true },
                     { typeof(LoadFixes), true },
                     { typeof(NoSalvageSoftlock), true },
                     { typeof(MissingAssetsContinueLoad), false },
                     { typeof(DataLoaderGetEntryCheck), true },
                     { typeof(DynamicTagsFix), true },
-                    { typeof(BTLightControllerThrottle), false },
                     { typeof(ShopTabLagFix), true },
-                    { typeof(MDDB_InMemoryCache), true },
                     { typeof(ContractLagFix), true },
                     //{ typeof(ParallelizeLoad), false },
                     { typeof(SimpleMetrics), false },
-                    { typeof(LazyLoadAssets), false },
                     { typeof(EnableLoggingDuringLoads), true },
-                    { typeof(DMFix), false },
                     { typeof(ExtraLogging), true },
                     { typeof(MDDB_TagsetQueryInChunks), false }
                 };
@@ -108,7 +104,6 @@ namespace BattletechPerformanceFix
 
                 var alwaysOn = new Dictionary<Type, bool>
                 {
-                    { typeof(CollectSingletons), true },
                 };
 
                 var allwant = alwaysOn.Concat(want);
